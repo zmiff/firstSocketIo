@@ -1,0 +1,12 @@
+<h1>Hello World</h1>
+<p id="insertHere"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+  var socket = io.connect();
+  socket.on('send', function(data){
+    $('#insertHere').html(data.hello);
+    socket.emit('sendBack', { sendBackData: 'this data is sent back from frontend' });
+  });
+</script>
